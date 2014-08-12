@@ -286,13 +286,22 @@ class MetaSliderPlugin {
      */
     public function register_shortcode( $atts ) {
 
-        if ( !isset( $atts['id'] ) ) {
+        if ( !isset( $atts['id'] ) && !isset( $atts['slug'] )) {
             return false;
         }
 
         // handle [metaslider id=123 restrict_to=home]
         if ( isset( $atts['restrict_to'] ) && $atts['restrict_to'] == 'home' && ! is_front_page() ) {
             return;
+        }
+
+        if ( !$atts['id'] ) {
+            $slider = get_page_by_path( $atts['slug'], OBJECT, 'ml-slider' );
+            if ( $slider ) {
+                $atts['id'] = $slider->ID;
+            } else {
+                return false;
+            }
         }
 
         // we have an ID to work with

@@ -515,7 +515,8 @@ class MetaSlider {
     private function update_title( $title ) {
         $slide = array(
             'ID' => $this->id,
-            'post_title' => $title
+            'post_title' => $title,
+            'post_name' => sanitize_title($title)
         );
 
         wp_update_post( $slide );
