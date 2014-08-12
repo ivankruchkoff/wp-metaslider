@@ -1520,6 +1520,7 @@ class MetaSliderPlugin {
                                                 <div class='tab tab-1'>
                                                 <p><?php _e( "Copy & paste the shortcode directly into any WordPress post or page.", "metaslider" ); ?></p>
                                                 <input readonly='readonly' type='text' value='[metaslider id=<?php echo $this->slider->id ?>]' /></div>
+                                                <input readonly='readonly' type='text' value='[metaslider slug="<?php $post = get_post( $this->slider->id ); echo $post->post_name; ?>"]' /></div>
                                                 <div class='tab tab-2' style='display: none'>
                                                 <p><?php _e( "Copy & paste this code into a template file to include the slideshow within your theme.", "metaslider" ); ?></p>
                                                 <textarea readonly='readonly'>&lt;?php &#13;&#10;    echo do_shortcode("[metaslider id=<?php echo $this->slider->id ?>]"); &#13;&#10;?></textarea></div>
